@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Graphique des Réponses</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}" defer></script>
+</head>
+<body>
+    <header>
+        <a href="{{ url_for('maestria') }}">
+            <img src="{{ url_for('static', filename='photo_mae.png') }}" alt="Logo">
+        </a>
+        <a href="{{ url_for('static', filename='ihu.jpg') }}" class="download-button" download>
+            User Manual
+        </a>
+    </header>
+    <div class="container">
+        <button id="menu-toggle" class="menu-toggle">☰</button>
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="{{ url_for('maestria') }}">Home</a></li>
+                <li><a href="{{ url_for('data_formats') }}">Data Formats</a></li>
+                <li><a href="{{ url_for('maestria') }}">Tutorials</a></li>
+                <li><a href="{{ url_for('maestria') }}">What is Maestria?</a></li>
+                <li><a href="{{ url_for('maestria') }}">Contact</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+
+            <div style="text-align: center;">
+                {% for plot_path in plot_paths %}
+                    <div>
+                        <img src="{{ url_for('static', filename=plot_path) }}"
+                             alt="Graphique des réponses"
+                             style="width: 500px; height: auto; display: block; margin: 0 auto;">
+                        <br>
+                        <a href="{{ url_for('static', filename=plot_path) }}"
+                           download="graphique_{{ loop.index }}.png"
+                           class="button-style"
+                           style="display: block; margin: 10px auto; width: 150px; padding: 10px; text-align: center;">
+                           Download
+                        </a>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

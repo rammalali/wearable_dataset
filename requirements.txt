@@ -1,0 +1,9 @@
+Flask
+gunicorn
+pandas
+psutil
+matplotlib
+plotly
+kaleido
+prometheus_flask_exporter
+chardet
